@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电梯安全演示平台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-text">
+        <h1>电梯安全演示平台</h1>
+        <p>集成电梯结构认知、运行体验、维护流程与应急救援演练的互动式单页应用。</p>
+      </div>
+      <div class="hero-badge">
+        <span>Interactive</span>
+        <span>Simulation</span>
+      </div>
+    </header>
+    <main>
+      <aside class="control-panel">
+        <section>
+          <h2>演示模式</h2>
+          <div class="mode-buttons">
+            <button class="mode-button active" data-mode="components">部件动画</button>
+            <button class="mode-button" data-mode="run">运行演示</button>
+            <button class="mode-button" data-mode="maintenance">维修演示</button>
+            <button class="mode-button" data-mode="rescue">应急救援演练</button>
+          </div>
+        </section>
+        <section class="panel run-controls">
+          <h3>运行控制</h3>
+          <p class="sub">点击楼层按钮体验调度，或开启自动循环运行。</p>
+          <div class="floor-buttons">
+            <button data-floor="5">5F</button>
+            <button data-floor="4">4F</button>
+            <button data-floor="3">3F</button>
+            <button data-floor="2">2F</button>
+            <button data-floor="1">1F</button>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="autoRunToggle" checked>
+            <span>自动循环运行</span>
+          </label>
+          <p class="status-line" id="runStatus">当前停靠：1层</p>
+        </section>
+        <section class="panel knowledge">
+          <h3>模式说明</h3>
+          <p id="modeDescription">观察电梯核心部件的协同工作，钢丝绳、轿门与平衡重的律动帮助理解动力传递与安全机制。</p>
+        </section>
+        <section class="panel checklist">
+          <h3>安全清单</h3>
+          <ul>
+            <li>乘梯前确认安全标识与检验合格标牌完好。</li>
+            <li>运行中避免倚靠轿厢门，勿阻挡关门过程。</li>
+            <li>维护作业必须执行断电挂牌与双人复核制度。</li>
+            <li>应急救援遵循“一听、二稳、三疏导”的操作流程。</li>
+          </ul>
+        </section>
+      </aside>
+      <section class="scene-wrapper">
+        <div class="ambient">
+          <div class="cloud cloud-1"></div>
+          <div class="cloud cloud-2"></div>
+          <div class="sun"></div>
+        </div>
+        <div class="elevator-scene mode-components" id="scene">
+          <div class="shaft">
+            <div class="floor-indicator" id="floorIndicator">
+              <span data-floor-marker="5">5</span>
+              <span data-floor-marker="4">4</span>
+              <span data-floor-marker="3">3</span>
+              <span data-floor-marker="2">2</span>
+              <span data-floor-marker="1" class="active">1</span>
+            </div>
+            <div class="counterweight" id="counterweight"></div>
+            <div class="cable"></div>
+            <div class="car-shadow"></div>
+            <div class="elevator-car" id="elevatorCar">
+              <div class="car-top"></div>
+              <div class="car-door left"></div>
+              <div class="car-door right"></div>
+              <div class="car-floor">
+                <div class="occupant"></div>
+              </div>
+            </div>
+            <div class="callout callout-door">轿门系统</div>
+            <div class="callout callout-cable">曳引钢丝绳</div>
+            <div class="callout callout-weight">平衡重块</div>
+            <div class="maintenance-platform">
+              <div class="mechanic">
+                <div class="helmet"></div>
+                <div class="body"></div>
+                <div class="tool"></div>
+              </div>
+            </div>
+            <div class="rescue-team">
+              <div class="rescuer">
+                <div class="helmet"></div>
+                <div class="body"></div>
+              </div>
+              <div class="safety-line"></div>
+              <div class="voice-guide">请保持镇静，救援正在进行。</div>
+            </div>
+          </div>
+          <div class="digital-panel">
+            <div class="signal"></div>
+            <div class="panel-floor" id="panelFloor">1</div>
+            <div class="panel-arrows" id="panelArrows">
+              <span class="arrow up active">▲</span>
+              <span class="arrow down">▼</span>
+            </div>
+            <div class="panel-message" id="panelMessage">部件动态展示，点击模式了解更多。</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>© 2024 智能电梯安全教育实验室 · Elevator Safety Lab</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
